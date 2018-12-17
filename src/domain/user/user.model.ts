@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
   },
   lastName: {
     type: String
+  },
+  workspaceId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Workspace'
   }
 });
 

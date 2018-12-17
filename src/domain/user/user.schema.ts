@@ -1,5 +1,7 @@
 import User from './user.model';
 
+import Workspace from '../workspace/workspace.model';
+
 export const userTypeDefs = `
  
   type User {
@@ -8,8 +10,8 @@ export const userTypeDefs = `
     password: String!
     firstName: String!
     lastName: String
-    # Last name is not a required field so it 
-    # does not need a "!" at the end.
+    workspaceId: String,
+    workspace: Workspace
   }
 
   input UserFilterInput {
@@ -30,7 +32,8 @@ export const userTypeDefs = `
     email: String
     password: String
     firstName: String
-    lastName: String
+    lastName: String,
+    workspaceId: String
   }
   
   # Extending the root Mutation type.
@@ -58,12 +61,23 @@ export const userResolvers = {
       return user.toGraph();
     },
     editUser: async (_, { id, input }) => {
-      const user: any = await User.findByIdAndUpdate(id, input);
+      const user: any = await User.findByIdAndUpdate(id, input, {
+        new: true
+      });
+
       return user.toGraph();
     },
     deleteUser: async (_, { id }) => {
       const user: any = await User.findByIdAndRemove(id);
       return user ? user.toGraph() : null;
+    }
+  },
+  User: {
+    async workspace(user: { workspaceId: String }) {
+      if (user.workspaceId) {
+        const workspace: any = await Workspace.findById(user.workspaceId);
+        return workspace.toGraph();
+      }
     }
   }
 };
