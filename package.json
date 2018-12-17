@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@types/graphql": "^14.0.0",
+    "@types/lodash": "^4.14.119",
     "@types/mongoose": "^5.2.10",
     "apollo-server": "^2.3.1",
+    "lodash": "^4.17.11",
     "mongoose": "^5.4.0",
     "graphql-tools": "^4.0.3",
     "graphql": "^14.0.2"
