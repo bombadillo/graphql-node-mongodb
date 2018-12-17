@@ -2,12 +2,25 @@
   "name": "graphql-node-mongodb",
   "version": "0.0.1",
   "description": "testing out graphql with node and mongodb",
-  "scripts": {    
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node build/index.js",
+    "start:ts": "ts-node src/index.ts",
+    "start:debug": "node --inspect=5858 -r ts-node/register src/index.ts",
+    "compile": "rm -rf build/* && tsc"
   },
   "dependencies": {
+    "@types/graphql": "^14.0.0",
+    "@types/mongoose": "^5.2.10",
     "apollo-server": "^2.3.1",
     "mongoose": "^5.4.0",
-    "graphql-tools": "^4.0.3"
+    "graphql-tools": "^4.0.3",
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2",
+    "nodemon": "^1.18.9"
   },
   "repository": {
     "type": "git",
