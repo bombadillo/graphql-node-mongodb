@@ -1,10 +1,9 @@
 import User from './user.model';
 
-
 export const userTypeDefs = `
  
   type User {
-    id: ID!
+    _id: ID!
     email: String!
     password: String!
     firstName: String!
@@ -50,7 +49,7 @@ export const userResolvers = {
     user: async (_, { id }) => {
       const user: any = await User.findById(id);
       return user.toGraph();
-    },
+    }
   },
   Mutation: {
     addUser: async (_, { input }) => {
@@ -64,7 +63,6 @@ export const userResolvers = {
     deleteUser: async (_, { id }) => {
       const user: any = await User.findByIdAndRemove(id);
       return user ? user.toGraph() : null;
-    },
-  },
+    }
+  }
 };
-
