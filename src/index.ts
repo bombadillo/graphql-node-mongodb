@@ -1,8 +1,13 @@
 import { ApolloServer } from 'apollo-server';
 import { makeExecutableSchema } from 'graphql-tools';
 import * as mongoose from 'mongoose';
+import { merge } from 'lodash';
 
 import { userResolvers, userTypeDefs } from './domain/user/user.schema';
+import {
+  workspaceResolvers,
+  workspaceTypeDefs
+} from './domain/workspace/workspace.schema';
 
 const MONGODB_URI = 'mongodb://localhost/graphql-demo';
 
@@ -21,8 +26,8 @@ const rootTypeDefs = `
 `;
 
 const schema = makeExecutableSchema({
-  typeDefs: [rootTypeDefs, userTypeDefs],
-  resolvers: userResolvers
+  typeDefs: [rootTypeDefs, userTypeDefs, workspaceTypeDefs],
+  resolvers: merge(userResolvers, workspaceResolvers)
 });
 
 const server = new ApolloServer({
