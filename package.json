@@ -1,0 +1,22 @@
+{
+  "name": "graphql-node-mongodb",
+  "version": "0.0.1",
+  "description": "testing out graphql with node and mongodb",
+  "scripts": {    
+  },
+  "dependencies": {
+    "apollo-server": "^2.3.1",
+    "mongoose": "^5.4.0",
+    "graphql-tools": "^4.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bombadillo/graphql-node-mongodb.git"
+  },
+  "author": "bombadillo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bombadillo/graphql-node-mongodb/issues"
+  },
+  "homepage": "https://github.com/bombadillo/graphql-node-mongodb#readme"
+}
