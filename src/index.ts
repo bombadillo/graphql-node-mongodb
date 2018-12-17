@@ -2,7 +2,7 @@ import { ApolloServer } from 'apollo-server';
 import { makeExecutableSchema } from 'graphql-tools';
 import * as mongoose from 'mongoose';
 
-import { userResolvers, userTypeDefs } from './common/user/user.schema';
+import { userResolvers, userTypeDefs } from './domain/user/user.schema';
 
 const MONGODB_URI = 'mongodb://localhost/graphql-demo';
 

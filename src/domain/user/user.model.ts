@@ -1,5 +1,7 @@
 import * as mongoose from 'mongoose';
 
+import toJson from '../../app-services/mapping/toJson';
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -21,8 +23,6 @@ const userSchema = new mongoose.Schema({
 
 userSchema.set('toObject', { virtuals: true });
 
-userSchema.method('toGraph', function toGraph(this: any) {
-  return JSON.parse(JSON.stringify(this));
-});
+userSchema.method('toGraph', toJson);
 
 export default mongoose.model('User', userSchema);
